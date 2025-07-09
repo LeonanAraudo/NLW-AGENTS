@@ -1,0 +1,13 @@
+//É responsavel pelas configurações que vão criar as tabelas no banco de dados
+import { defineConfig } from 'drizzle-kit'
+import { env } from './src/env.ts'
+
+export default defineConfig({
+  dialect: 'postgresql',
+  casing: 'snake_case',
+  schema: './src/db/schema/**.ts',
+  out: './src/db/migrations',
+  dbCredentials: {
+    url: env.DATABASE_URL,
+  },
+})

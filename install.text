@@ -1,0 +1,10 @@
+- Instalamos o Biome para organização do codigo
+- Instalamos o Ultracite pois ele ja vem com as configurações do Biome, logo não precisamos configurar
+- Em relação ao docker estamos usando uma imagem chamada pgvector ela vai lidar com os fatores de pesquisas
+levando em considerações dados em vetores, segundo o Diego as palavras serão convertidas em vetores cheios
+de numeros ex:
+cachorro => [1, 2] onde 1 quer dizer o tipo do animal 2 quer dizer que é um animal etc
+se o usuário for la e buscar por cão vai ser o mesmo vetor de cachorro porque é isso que a palavra quer dizer
+cão => [1,2 ]
+O vetor é basicamente uma representação numerica do que o texto quer dizer e não do texto dela, é isso que vai
+permitir fazer a busca semantica/busca por similaridades

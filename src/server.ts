@@ -2,7 +2,10 @@ import fastify from "fastify";
 import { serializerCompiler,validatorCompiler,type ZodTypeProvider } from "fastify-type-provider-zod";
 import fastifyCors from "@fastify/cors";
 import { env } from "./env.ts";
-import { getRoomsRoute } from "./http/get-rooms.ts";
+import { getRoomsRoute } from "./http/routes/get-rooms.ts";
+import { createRoomsRoute } from "./http/routes/create-room.ts";
+import { getRoomQuestions } from "./http/routes/get-room-questions.ts";
+import { createQuestionRoute } from "./http/routes/create-question.ts";
 
 //Fastify é um facilitador de construção de apis
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -24,9 +27,9 @@ app.get("/health",() => {
 app.listen({port: env.PORT })
 
 app.register(getRoomsRoute)
-
-
-
+app.register(createRoomsRoute)
+app.register(getRoomQuestions)
+app.register(createQuestionRoute)
 
 
   // package.json --experimental-strip-types isso aqui remove toda a parte de tipos da aplicação
